@@ -1,6 +1,6 @@
 package pl.homework.carrental.model;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -13,6 +13,7 @@ public class Rental {
     private long id;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "car_id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Car car;
     private Date startRentalDate;
     private Date endRentalDate;

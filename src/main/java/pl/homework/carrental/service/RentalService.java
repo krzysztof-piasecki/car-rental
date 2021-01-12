@@ -54,7 +54,8 @@ public class RentalService {
 
         for (Rental rental: takenCars) {
             if (rental.getEndRentalDate() == null) {
-                carService.getCarById(rental.getCar().getId()).ifPresent(availableCars::add);
+                Optional <Car> car = carService.getCarById(rental.getCar().getId());
+                car.ifPresent(availableCars::add);
             }
         }
         for (Car car: availableCars){
