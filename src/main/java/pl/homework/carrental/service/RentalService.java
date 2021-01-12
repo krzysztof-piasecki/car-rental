@@ -44,14 +44,22 @@ public class RentalService {
         return rentalRepository.findByEndRentalDateIsNull();
     }
 
-    public ArrayList<Car> getAllAvailableCars(){
+    public List<Car> getAllAvailableCars(){
         List<Rental> takenCars = rentalRepository.findByEndRentalDateIsNull();
-        ArrayList<Long> availableCarsId = new ArrayList<>();
+        ArrayList<Car> availableCars = new ArrayList<>();
+
+        Iterable<Car> carsIterable = carService.getAllCars();
+        List<Car> allCars = new ArrayList<>();
+        carsIterable.forEach(allCars::add);
+
         for (Rental rental: takenCars) {
             if (rental.getEndRentalDate() == null) {
-                availableCarsId.add(rental.getCar().getId());
+                carService.getCarById(rental.getCar().getId()).ifPresent(availableCars::add);
             }
         }
-    return availableCarsId;
+        for (Car car: availableCars){
+            allCars.remove(car);
+        }
+    return allCars;
     }
 }

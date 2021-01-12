@@ -9,7 +9,6 @@ import pl.homework.carrental.model.Rental;
 import pl.homework.carrental.service.CarService;
 import pl.homework.carrental.service.RentalService;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -70,8 +69,11 @@ public class RentalController {
     }
 
     @GetMapping("rental/in-progress")
-    public ArrayList<Rental> getAllRentalsInProgress(){
-        ArrayList<Rental> takenCars = (ArrayList<Rental>) rentalService.getAllRentalsInProgress();
-        return takenCars;
+    public List<Rental> getAllRentalsInProgress(){
+        return rentalService.getAllRentalsInProgress();    }
+
+    @GetMapping("rent/available")
+    public List<Car> getAllAvailableCars(){
+        return rentalService.getAllAvailableCars();
     }
 }
