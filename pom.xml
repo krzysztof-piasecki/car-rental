@@ -10,7 +10,6 @@
 	</parent>
 	<groupId>pl.homework</groupId>
 	<artifactId>car-rental</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>car-rental</name>
 	<description>Car rental project</description>
 
