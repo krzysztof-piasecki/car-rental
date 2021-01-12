@@ -15,6 +15,10 @@ public class Rental {
     @JoinColumn(name = "car_id")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Car car;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "rentee_id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    private Rentee rentee;
     private Date startRentalDate;
     private Date endRentalDate;
 
@@ -46,4 +50,8 @@ public class Rental {
     public void setEndRentalDate(Date endRentalDate) {
         this.endRentalDate = endRentalDate;
     }
+
+    public Rentee getRentee() {return rentee;}
+
+    public void setRentee(Rentee rentee) {this.rentee = rentee;}
 }

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import pl.homework.carrental.model.Car;
 import pl.homework.carrental.repository.CarRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -15,6 +16,7 @@ public class CarService {
 
 
     public void saveCar(Car car){
+        car.setAvailable(true);
         carRepository.save(car);
     }
 
@@ -22,15 +24,10 @@ public class CarService {
         return carRepository.findById(id);
     }
 
-    public void deleteCarById(Long id){
-        carRepository.deleteById(id);
-    }
-
     public void deleteCar(Car car){
         carRepository.delete(car);
     }
 
-    public Iterable<Car> getAllCars(){
-        return carRepository.findAll();
-    }
+    public List<Car> getAllAvailableCar(){
+        return carRepository.findByIsAvailableIsTrue();}
 }

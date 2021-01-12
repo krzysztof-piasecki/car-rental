@@ -1,34 +1,27 @@
 package pl.homework.carrental.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(nullable = false)
     private String company;
+    @Column(nullable = false)
     private String model;
     private Double horsePower;
     private Integer engineCapacity;
-    private Double accelerationTo100;
+    private boolean isAvailable;
 
     public long getId() {return id;}
 
-    public String getCompany() {
-        return company;
-    }
+    public String getCompany() {return company;}
 
-    public void setCompany(String company) {
-        this.company = company;
-    }
+    public void setCompany(String company) {this.company = company;}
 
-    public String getModel() {
-        return model;
-    }
+    public String getModel() {return model;}
 
     public void setModel(String model) {
         this.model = model;
@@ -50,11 +43,7 @@ public class Car {
         this.engineCapacity = engineCapacity;
     }
 
-    public Double getAccelerationTo100() {
-        return accelerationTo100;
-    }
+    public boolean isAvailable() {return isAvailable;}
 
-    public void setAccelerationTo100(Double accelerationTo100) {
-        this.accelerationTo100 = accelerationTo100;
-    }
+    public void setAvailable(boolean available) {isAvailable = available;}
 }

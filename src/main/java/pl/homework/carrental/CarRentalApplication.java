@@ -2,10 +2,12 @@ package pl.homework.carrental;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.time.LocalDate;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 @SpringBootApplication
+@EnableConfigurationProperties
+@EntityScan(basePackages = {"pl.homework.carrental.model"})
 public class CarRentalApplication {
 
 	public static void main(String[] args) {
