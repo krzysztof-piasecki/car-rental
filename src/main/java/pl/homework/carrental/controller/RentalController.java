@@ -60,13 +60,6 @@ public class RentalController {
         rentalService.returnACar(rental.get());
     }
 
-    @DeleteMapping(path = "rent:{id}")
-    public void deleteCarById (@PathVariable long id){
-        Optional<Rental> rental = rentalService.getRentalById(id);
-        checkIfEmpty(rental);
-        rentalService.deleteRental(rental.get());
-    }
-
     private void checkIfEmpty(Optional<?> optional){
         if (optional.isEmpty()){
             throw new ResponseStatusException(

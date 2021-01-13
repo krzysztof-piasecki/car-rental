@@ -39,8 +39,8 @@ public class CarController {
     }
 
     @GetMapping(path = "car/available")
-    public List<Car> getAllAvailableCar(){
-        return carService.getAllAvailableCar();
+    public List<Car> getAllAvailableCars(){
+        return carService.getAllAvailableCars();
     }
 
     private void checkIfEmpty(Optional<?> optional){

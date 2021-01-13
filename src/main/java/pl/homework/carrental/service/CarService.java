@@ -16,7 +16,6 @@ public class CarService {
 
 
     public void saveCar(Car car){
-        car.setAvailable(true);
         carRepository.save(car);
     }
 
@@ -28,6 +27,15 @@ public class CarService {
         carRepository.delete(car);
     }
 
-    public List<Car> getAllAvailableCar(){
-        return carRepository.findByIsAvailableIsTrue();}
+    public List<Car> getAllAvailableCars(){
+        return carRepository.findByIsAvailableIsTrue();
+    }
+
+    public void deleteAllCars(){
+        carRepository.deleteAll();
+    }
+
+    public Iterable<Car> getAllCars(){
+        return carRepository.findAll();
+    }
 }

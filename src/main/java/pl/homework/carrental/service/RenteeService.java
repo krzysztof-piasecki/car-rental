@@ -20,7 +20,12 @@ public class RenteeService {
     public void deleteRentee(Rentee rentee){
         renteeRepository.delete(rentee);
     }
+
     public Optional<Rentee> getRenteeById(Long id){
         return renteeRepository.findById(id);
     }
+
+    public void deleteAllRentees(){renteeRepository.deleteAll();}
+
+    public Iterable<Rentee> getAllRentees(){return renteeRepository.findAll();}
 }
